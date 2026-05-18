@@ -1,0 +1,377 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\gravity\\gravitymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gravity\\gravitymanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\map\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\map\\gridmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\interfaces\\iinputprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interfaces\\iinputprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\interfaces\\igravityaffected.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interfaces\\igravityaffected.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\gravity\\gravitydirection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gravity\\gravitydirection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\map\\mapchunk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\map\\mapchunk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\obstacle\\obstacleplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\obstacle\\obstacleplatform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\obstacle\\obstaclebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\obstacle\\obstaclebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\core\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\player\\playerjump.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerjump.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\player\\playergravity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playergravity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Core\\InputManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Core\\InputManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\obstacle\\obstaclegravity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\obstacle\\obstaclegravity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\camera\\camerafollowz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camera\\camerafollowz.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\interfaces\\ipoolable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interfaces\\ipoolable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\map\\gridposition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\map\\gridposition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\core\\singletonbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\core\\singletonbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\map\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\map\\mapgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\admin\\desktop\\unity\\trainrush\\assets\\scripts\\obstacle\\obstaclemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\obstacle\\obstaclemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 16,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ObstacleManager.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Obstacle\\ObstacleManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Obstacle\\ObstacleManager.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Obstacle\\ObstacleManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Obstacle\\ObstacleManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T01:20:32.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MapGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Map\\MapGenerator.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Map\\MapGenerator.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Map\\MapGenerator.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Map\\MapGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T00:03:27.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MapChunk.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Map\\MapChunk.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Map\\MapChunk.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Map\\MapChunk.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Map\\MapChunk.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvwQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T00:02:57.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ObstaclePlatform.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Obstacle\\ObstaclePlatform.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Obstacle\\ObstaclePlatform.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Obstacle\\ObstaclePlatform.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Obstacle\\ObstaclePlatform.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T03:19:33.138Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ObstacleBase.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Obstacle\\ObstacleBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Obstacle\\ObstacleBase.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Obstacle\\ObstacleBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Obstacle\\ObstacleBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T01:22:30.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ObjectPool.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Core\\ObjectPool.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\ObjectPool.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Core\\ObjectPool.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\ObjectPool.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T00:02:05.783Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PlayerJump.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Player\\PlayerJump.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerJump.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Player\\PlayerJump.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerJump.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T21:37:48.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Player\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Player\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T22:00:33.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T21:10:06.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PlayerGravity.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Player\\PlayerGravity.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerGravity.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Player\\PlayerGravity.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerGravity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T05:37:27.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Core\\InputManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\InputManager.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Core\\InputManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\InputManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T21:36:01.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ObstacleGravity.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Obstacle\\ObstacleGravity.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Obstacle\\ObstacleGravity.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Obstacle\\ObstacleGravity.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Obstacle\\ObstacleGravity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T04:37:41.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CameraFollowZ.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Camera\\CameraFollowZ.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Camera\\CameraFollowZ.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Camera\\CameraFollowZ.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Camera\\CameraFollowZ.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T03:33:00.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IPoolable.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Interfaces\\IPoolable.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interfaces\\IPoolable.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Interfaces\\IPoolable.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interfaces\\IPoolable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T00:01:18.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "GridPosition.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Map\\GridPosition.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Map\\GridPosition.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Map\\GridPosition.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Map\\GridPosition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T21:56:45.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SingletonBase.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Core\\SingletonBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Core\\SingletonBase.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Core\\SingletonBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Core\\SingletonBase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T04:37:39.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GravityManager.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Gravity\\GravityManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Gravity\\GravityManager.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Gravity\\GravityManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Gravity\\GravityManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T05:37:01.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GridManager.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Map\\GridManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Map\\GridManager.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Map\\GridManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Map\\GridManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T21:57:02.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IInputProvider.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Interfaces\\IInputProvider.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interfaces\\IInputProvider.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Interfaces\\IInputProvider.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interfaces\\IInputProvider.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T21:36:49.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IGravityAffected.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Interfaces\\IGravityAffected.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Interfaces\\IGravityAffected.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Interfaces\\IGravityAffected.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Interfaces\\IGravityAffected.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T05:36:33.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GravityDirection.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Gravity\\GravityDirection.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Gravity\\GravityDirection.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\unity\\TrainRush\\Assets\\Scripts\\Gravity\\GravityDirection.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Gravity\\GravityDirection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T21:56:20.03Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
