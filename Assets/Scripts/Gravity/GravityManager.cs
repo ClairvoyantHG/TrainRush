@@ -5,12 +5,15 @@ using UnityEngine;
 // 중력 관리 매니저
 public class GravityManager : SingletonBase<GravityManager>
 {
-    private GravityDirection currentGravity = GravityDirection.Down;
+    [SerializeField] private float activationDistance = 40f;            // 중력 적용 범위
+    public float ActivationDistance { get { return activationDistance; } }
 
-    // 중력의 영향을 받을 객체 리스트
-    //private List<IGravityAffected> affectedObjects = new List<IGravityAffected>();
+    private GravityDirection currentGravity = GravityDirection.Down;    // 현재 적용중인 중력 
+    public GravityDirection CurrentGravity { get { return currentGravity; } }
+
+    //private List<IGravityAffected> affectedObjects = new List<IGravityAffected>();    // 중력의 영향을 받을 객체 리스트
+
     private IInputProvider inputProvider;
-
     private event Action<GravityDirection> onGravityChanged;
 
     public void BindEventOnGravity(Action<GravityDirection> CallBack)
@@ -24,7 +27,7 @@ public class GravityManager : SingletonBase<GravityManager>
     }
     private void Start()
     {
-        inputProvider = InputManager.Instance;
+        inputProvider = PlayerInputManager.Instance;
 
         if (inputProvider == null)
         {
@@ -62,15 +65,15 @@ public class GravityManager : SingletonBase<GravityManager>
     // 중력 방향 전환 시 구독 중인 모든 객체들에게 새로운 방향을 일제히 통보
     private void ChangeGravity(GravityDirection newGravity)
     {
-        //if (currentGravity == newGravity) return;
-
-        //currentGravity = newGravity;
 
         //foreach (IGravityAffected affectedObject in affectedObjects)
         //{
         //    affectedObject.OnGravityChanged(currentGravity);
         //}
 
-        onGravityChanged?.Invoke(newGravity);
+        if (currentGravity == newGravity) return;
+
+        currentGravity = newGravity;
+        onGravityChanged?.Invoke(currentGravity);
     }
 }

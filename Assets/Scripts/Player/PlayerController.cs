@@ -5,26 +5,31 @@
 [RequireComponent(typeof(PlayerJump))]
 
 // 플레이어의 컴포넌트 관리용 컴포넌트
-public class PlayerController : MonoBehaviour
+public class PlayerController : SingletonBase<PlayerController>
 {
     private PlayerMovement playerMovement;
     private PlayerGravity playerGravity;
     private PlayerJump playerJump;
     private IInputProvider inputProvider;
 
-
-    private void Start()
+    protected override void Awake()
     {
-        // 필수 컴포넌트 캐싱
+        base.Awake(); // 싱글턴 초기화
+
         playerMovement = GetComponent<PlayerMovement>();
         playerGravity = GetComponent<PlayerGravity>();
         playerJump = GetComponent<PlayerJump>();
-
-        // 입력 매니저 참조
-        inputProvider = InputManager.Instance;
-
     }
+    private void Start()
+    {
+        inputProvider = PlayerInputManager.Instance;
 
+        if (inputProvider == null)
+        {
+            this.enabled = false;
+            return;
+        }
+    }
     private void Update()
     { 
         bool isJumpPressed = inputProvider.GetJumpInput();

@@ -59,7 +59,7 @@ public class MapGenerator : SingletonBase<MapGenerator>
         GameObject selectedPrefab = chunkPrefabs[randomIndex];
 
         // 오브젝트 풀을 통해 맵 생성
-        GameObject newChunk = ObjectPool.Instance.SpawnFromPool(selectedPrefab, new Vector3(0f, 0f, spawnZ), Quaternion.identity);
+        GameObject newChunk = ObjectPoolingManager.Instance.SpawnFromPool(selectedPrefab, new Vector3(0f, 0f, spawnZ), Quaternion.identity);
 
         ActiveChunk newActiveChunk = new ActiveChunk();
         newActiveChunk.Instance = newChunk;
@@ -84,9 +84,9 @@ public class MapGenerator : SingletonBase<MapGenerator>
         activeChunks.RemoveAt(0);
 
         // 오브젝트 풀로 반환
-        if (ObjectPool.Instance != null)
+        if (ObjectPoolingManager.Instance != null)
         {
-            ObjectPool.Instance.ReturnToPool(chunkToRemove.PrefabKey, chunkToRemove.Instance);
+            ObjectPoolingManager.Instance.ReturnToPool(chunkToRemove.PrefabKey, chunkToRemove.Instance);
         }
     }
 }

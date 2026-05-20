@@ -5,6 +5,8 @@ public class ObstacleBase : MonoBehaviour, IPoolable
 {
     public float zLength = 1f;      // 장애물의 길이
 
+    public bool alignRotationToSurface = true;  // 회전 필요 여부
+
     private GridPosition currentGridPosition;
     private ObstacleGravity obstacleGravity;
 
@@ -24,7 +26,11 @@ public class ObstacleBase : MonoBehaviour, IPoolable
         if (GridManager.Instance != null)
         {
             transform.position = GridManager.Instance.GetWorldPosition(currentGridPosition);
-            transform.rotation = GridManager.Instance.GetWorldRotation(currentGridPosition.CurrentGravity);
+
+            if (alignRotationToSurface)
+            {
+                transform.rotation = GridManager.Instance.GetWorldRotation(currentGridPosition.CurrentGravity);
+            }
         }
 
         // 중력 컴포넌트 초기화

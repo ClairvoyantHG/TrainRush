@@ -30,7 +30,7 @@ public class MapChunk : MonoBehaviour, IPoolable
     // 맵 생성 시
     public void OnSpawn()
     {
-        if (obstaclePrefabs.Count == 0 || spawnPoints.Count == 0 || ObjectPool.Instance == null)
+        if (obstaclePrefabs.Count == 0 || spawnPoints.Count == 0 || ObjectPoolingManager.Instance == null)
         {
             return;
         }
@@ -46,11 +46,11 @@ public class MapChunk : MonoBehaviour, IPoolable
     public void OnDespawn()
     {
         // 맵이 생성한 장애물 수거
-        if (ObjectPool.Instance != null)
+        if (ObjectPoolingManager.Instance != null)
         {
             foreach (SpawnedObstacleInfo info in spawnedObstacles)
             {
-                ObjectPool.Instance.ReturnToPool(info.PrefabKey, info.Instance);
+                ObjectPoolingManager.Instance.ReturnToPool(info.PrefabKey, info.Instance);
             }
         }
 
@@ -63,7 +63,7 @@ public class MapChunk : MonoBehaviour, IPoolable
         int randomIndex = Random.Range(0, obstaclePrefabs.Count);
 
         GameObject prefabToSpawn = obstaclePrefabs[randomIndex];
-        GameObject obstacleInstance = ObjectPool.Instance.SpawnFromPool(prefabToSpawn, Vector3.zero, Quaternion.identity);
+        GameObject obstacleInstance = ObjectPoolingManager.Instance.SpawnFromPool(prefabToSpawn, Vector3.zero, Quaternion.identity);
 
         // 장애물의 z좌표 계산
         float absoluteZ = transform.position.z + data.localZOffset;
