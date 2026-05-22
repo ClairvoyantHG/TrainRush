@@ -38,6 +38,8 @@ public class PlayerJump : MonoBehaviour
                     break;
             }
 
+
+
             int targetX = currentPos.X + potentialOffset.x;
             int targetY = currentPos.Y + potentialOffset.y;
 

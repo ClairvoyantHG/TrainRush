@@ -1,0 +1,11 @@
+[
+  {
+    "Id": "Map_001",
+    "ObstaclePrefabList": null,
+    "SpawnPointsList": [
+      "1:0:0",
+      "-1:1:-7",
+      "0:-1:7"
+    ]
+  }
+]

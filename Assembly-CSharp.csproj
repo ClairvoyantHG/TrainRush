@@ -57,6 +57,7 @@
     <Compile Include="Assets\Scripts\Gravity\GravityManager.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollowZ.cs" />
     <Compile Include="Assets\Scripts\Obstacle\ObstacleManager.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraGravityMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Core\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerGravity.cs" />
