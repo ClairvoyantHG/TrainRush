@@ -8,8 +8,9 @@ public class GameDataBase
 }
 
 [Serializable]
-public class MapChunkData : GameDataBase
+public class MapPatternData : GameDataBase
 {
+    public string MapPrefabId;
     public List<string> ObstaclePrefabList;
     public List<string> SpawnPointsList;
 }
@@ -17,5 +18,5 @@ public class MapChunkData : GameDataBase
 [Serializable]
 public class StageData : GameDataBase
 {
-    public List<string> MapChunkIdList;
+    public List<string> MapPatternIdList;
 }

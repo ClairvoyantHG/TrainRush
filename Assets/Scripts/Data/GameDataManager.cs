@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEditor.Overlays;
 using UnityEngine;
 
 public class GameDataManager : SingletonBase<GameDataManager>
@@ -11,7 +10,7 @@ public class GameDataManager : SingletonBase<GameDataManager>
         public List<T> items;
     }
 
-    public Dictionary<string, MapChunkData> MapChunkDataList { get; private set; } = new Dictionary<string, MapChunkData>();
+    public Dictionary<string, MapPatternData> MapPatternDataList { get; private set; } = new Dictionary<string, MapPatternData>();
     public Dictionary<string, StageData> StageDataList { get; private set; } = new Dictionary<string, StageData>();
 
     protected override void Awake()
@@ -22,7 +21,7 @@ public class GameDataManager : SingletonBase<GameDataManager>
 
     public void LoadAllData()
     {
-        MapChunkDataList = LoadData<MapChunkData>("MapChunkData");
+        MapPatternDataList = LoadData<MapPatternData>("MapPatternData");
         StageDataList = LoadData<StageData>("StageData");
     }
 
@@ -30,14 +29,9 @@ public class GameDataManager : SingletonBase<GameDataManager>
     {
         string resourcePath = "JsonOutput/" + tableName;
         TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
-
         Dictionary<string, T> dataDictionary = new Dictionary<string, T>();
 
-        if (textAsset == null)
-        {
-            Debug.LogError("[Error] 리소스를 찾을 수 없습니다: Resources/" + resourcePath);
-            return dataDictionary;
-        }
+        if (textAsset == null) return dataDictionary;
 
         try
         {
@@ -49,35 +43,28 @@ public class GameDataManager : SingletonBase<GameDataManager>
             {
                 foreach (T item in wrapper.items)
                 {
-                    if (!dataDictionary.ContainsKey(item.Id))
-                    {
-                        dataDictionary.Add(item.Id, item);
-                    }
+                    if (!dataDictionary.ContainsKey(item.Id)) dataDictionary.Add(item.Id, item);
                 }
-                Debug.Log(typeof(T).Name + " 데이터를 " + wrapper.items.Count + "개 로드했습니다.");
             }
         }
         catch (Exception ex)
         {
-            Debug.LogError("[" + typeof(T).Name + " JSON 로드 오류] " + ex.Message);
+            Debug.LogError("[" + typeof(T).Name + " 로드 오류] " + ex.Message);
         }
-
         return dataDictionary;
     }
 
-    public MapChunkData GetMapChunkData(string id)
+    public MapPatternData GetMapPatternData(string id)
     {
-        if (MapChunkDataList == null || string.IsNullOrEmpty(id)) return null;
-
-        MapChunkData item;
-        if (MapChunkDataList.TryGetValue(id, out item)) return item;
+        if (MapPatternDataList == null || string.IsNullOrEmpty(id)) return null;
+        MapPatternData item;
+        if (MapPatternDataList.TryGetValue(id, out item)) return item;
         return null;
     }
 
     public StageData GetStageData(string id)
     {
         if (StageDataList == null || string.IsNullOrEmpty(id)) return null;
-
         StageData item;
         if (StageDataList.TryGetValue(id, out item)) return item;
         return null;

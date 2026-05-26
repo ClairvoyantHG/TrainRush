@@ -3,43 +3,44 @@ using UnityEngine;
 
 public class MapGenerator : SingletonBase<MapGenerator>
 {
-    [Header("Map Settings")]
-    [SerializeField] private GameObject mapChunkPrefab;
-
-    // 🔥 인스펙터에서는 "Stage_001" 같은 스테이지 ID 하나만 입력받습니다.
+    [Header("Stage Settings")]
     [SerializeField] private string currentStageId = "Stage_001";
     [SerializeField] private int initialChunkCount = 5;
 
-    // 외부 Json에서 받아와 저장할 리스트 변수 (더 이상 [SerializeField]가 아님)
-    private List<string> stageChunkIds = new List<string>();
+    // 수거할 때 어떤 프리팹 키(원본)로 생성했는지 알아야 하므로 구조체로 묶어 큐에 보관합니다.
+    private struct ActiveChunkInfo
+    {
+        public GameObject PrefabKey;
+        public MapChunk Chunk;
 
+        public ActiveChunkInfo(GameObject prefabKey, MapChunk chunk)
+        {
+            PrefabKey = prefabKey;
+            Chunk = chunk;
+        }
+    }
+
+    private List<string> stageMapPatternIds = new List<string>();
     private float nextSpawnZ = 0f;
-    private Queue<MapChunk> activeChunks = new Queue<MapChunk>();
     private int currentChunkIndex = 0;
+
+    private Queue<ActiveChunkInfo> activeChunks = new Queue<ActiveChunkInfo>();
 
     private void Start()
     {
-        if (mapChunkPrefab == null)
-        {
-            Debug.LogError("[MapGenerator] 맵 청크 프리팹이 비어있습니다.");
-            return;
-        }
-
-        // 1. 🔥 GameDataManager에서 현재 스테이지의 데이터를 Json에서 끌어옵니다.
+        // 1. 스테이지 데이터 로드
         StageData stageData = GameDataManager.Instance.GetStageData(currentStageId);
-
-        if (stageData != null && stageData.MapChunkIdList != null && stageData.MapChunkIdList.Count > 0)
+        if (stageData != null && stageData.MapPatternIdList != null && stageData.MapPatternIdList.Count > 0)
         {
-            // 성공적으로 로드되었다면 리스트 덮어씌우기
-            stageChunkIds = stageData.MapChunkIdList;
+            stageMapPatternIds = stageData.MapPatternIdList;
         }
         else
         {
-            Debug.LogError("[MapGenerator] 스테이지 데이터를 불러올 수 없거나 맵 청크 리스트가 비어있습니다: " + currentStageId);
+            Debug.LogError("[MapGenerator] 스테이지 데이터를 불러올 수 없습니다: " + currentStageId);
             return;
         }
 
-        // 2. 초기 맵 청크 생성 실행
+        // 2. 초기 맵 청크 생성
         for (int i = 0; i < initialChunkCount; i++)
         {
             SpawnNextChunk();
@@ -48,21 +49,41 @@ public class MapGenerator : SingletonBase<MapGenerator>
 
     public void SpawnNextChunk()
     {
-        string targetChunkId = stageChunkIds[currentChunkIndex];
-        currentChunkIndex = (currentChunkIndex + 1) % stageChunkIds.Count;
+        // 1. 현재 순서의 MapTable ID를 가져옴
+        string targetTableId = stageMapPatternIds[currentChunkIndex];
+        currentChunkIndex = (currentChunkIndex + 1) % stageMapPatternIds.Count;
 
-        Vector3 spawnPosition = new Vector3(0f, 0f, nextSpawnZ);
-        GameObject chunkObj = ObjectPoolingManager.Instance.SpawnFromPool(mapChunkPrefab, spawnPosition, Quaternion.identity);
+        // 2. MapTable 데이터 로드
+        MapPatternData tableData = GameDataManager.Instance.GetMapPatternData(targetTableId);
+        if (tableData == null) return;
 
-        if (chunkObj != null)
+        // 3. 해당 데이터가 요구하는 맵(바닥) 프리팹을 찾아 로드
+        GameObject loadedMapPrefab = Resources.Load<GameObject>("Prefabs/MapChunks/" + tableData.MapPrefabId);
+        if (loadedMapPrefab != null)
         {
-            MapChunk chunk = chunkObj.GetComponent<MapChunk>();
-            if (chunk != null)
+            // 4. 오브젝트 풀을 통해 맵 스폰
+            Vector3 spawnPosition = new Vector3(0f, 0f, nextSpawnZ);
+            GameObject chunkObj = ObjectPoolingManager.Instance.SpawnFromPool(loadedMapPrefab, spawnPosition, Quaternion.identity);
+
+            if (chunkObj != null)
             {
-                chunk.SetupChunkData(targetChunkId, nextSpawnZ);
-                nextSpawnZ += chunk.ChunkLength;
-                activeChunks.Enqueue(chunk);
+                MapChunk chunk = chunkObj.GetComponent<MapChunk>();
+                if (chunk != null)
+                {
+                    // 5. 생성된 맵에 MapTable 데이터 주입 (내부에서 장애물이 랜덤 생성됨)
+                    chunk.SetupChunkData(tableData, nextSpawnZ);
+
+                    // 6. 다음 맵이 생성될 Z좌표 갱신 (프리팹별로 길이가 달라도 자동 대응)
+                    nextSpawnZ += chunk.ChunkLength;
+
+                    // 7. 수거(Recycle)를 위해 프리팹 원본과 청크 객체를 함께 큐에 저장
+                    activeChunks.Enqueue(new ActiveChunkInfo(loadedMapPrefab, chunk));
+                }
             }
+        }
+        else
+        {
+            Debug.LogError("[MapGenerator] 맵 프리팹을 찾을 수 없습니다: " + tableData.MapPrefabId);
         }
     }
 
@@ -70,8 +91,9 @@ public class MapGenerator : SingletonBase<MapGenerator>
     {
         if (activeChunks.Count > 0)
         {
-            MapChunk oldChunk = activeChunks.Dequeue();
-            ObjectPoolingManager.Instance.ReturnToPool(mapChunkPrefab, oldChunk.gameObject);
+            ActiveChunkInfo oldChunkInfo = activeChunks.Dequeue();
+            // 정확한 프리팹 키값을 넘겨주어 ObjectPoolingManager가 올바른 큐에 회수하도록 처리
+            ObjectPoolingManager.Instance.ReturnToPool(oldChunkInfo.PrefabKey, oldChunkInfo.Chunk.gameObject);
         }
     }
 }

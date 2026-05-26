@@ -1,10 +1,22 @@
 [
   {
     "Id": "Stage_001",
-    "MapChunkIdList": [ "ChunkG3_001", "ChunkG3_002", "ChunkG3_001", "ChunkG3_003" ]
+    "MapPatternIdList": [
+      "Pattern_Empty_SafeZone",
+      "Pattern_001",
+      "Pattern_001",
+      "Pattern_002",
+      "Pattern_001"
+    ]
   },
   {
     "Id": "Stage_002",
-    "MapChunkIdList": [ "ChunkG3_003", "ChunkG3_004", "ChunkG3_005" ]
+    "MapPatternIdList": [
+      "Pattern_002",
+      "Pattern_002",
+      "Pattern_001",
+      "Pattern_Empty_SafeZone",
+      "Pattern_002"
+    ]
   }
 ]

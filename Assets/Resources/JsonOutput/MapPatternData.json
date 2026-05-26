@@ -1,0 +1,35 @@
+[
+  {
+    "Id": "Pattern_001",
+    "MapPrefabId": "Map_001",
+    "ObstaclePrefabList": [
+      "Obstacle_001",
+      "Obstacle_002"
+    ],
+    "SpawnPointsList": [
+      "1:0:0",
+      "-1:1:5",
+      "0:-1:10"
+    ]
+  },
+  {
+    "Id": "Pattern_002",
+    "MapPrefabId": "Map_002",
+    "ObstaclePrefabList": [
+      "Obstacle_003",
+      "Obstacle_001"
+    ],
+    "SpawnPointsList": [
+      "0:0:3",
+      "1:0:8",
+      "-1:0:15",
+      "0:1:20"
+    ]
+  },
+  {
+    "Id": "Pattern_Empty_SafeZone",
+    "MapPrefabId": "Map_001",
+    "ObstaclePrefabList": [],
+    "SpawnPointsList": []
+  }
+]

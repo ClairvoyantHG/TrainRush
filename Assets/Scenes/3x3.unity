@@ -992,6 +992,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6825941830936104924, guid: 272d6fbcb443bb6408b9e43e87c7647f, type: 3}
+      propertyPath: mapChunkPrefab
+      value: 
+      objectReference: {fileID: 5034281229329288615, guid: 0d88741681c9e2d459e2e2ce92ad06d9, type: 3}
+    - target: {fileID: 6825941830936104924, guid: 272d6fbcb443bb6408b9e43e87c7647f, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 1091123080}

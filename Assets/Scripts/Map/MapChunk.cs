@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MapChunk : MonoBehaviour, IPoolable
 {
+    // 프리팹마다 인스펙터에서 맵의 길이를 개별적으로 지정할 수 있습니다.
     [SerializeField] private float chunkLength = 40f;
     private float currentZPosition;
 
@@ -22,39 +23,31 @@ public class MapChunk : MonoBehaviour, IPoolable
 
     public float ChunkLength { get { return chunkLength; } }
 
-    public void OnSpawn()
-    {
-        Debug.Log("tmvhs");
-    }
+    public void OnSpawn() { }
 
-    public void SetupChunkData(string chunkId, float zPosition)
+    // MapGenerator가 맵을 생성하고 데이터를 밀어넣어주는 진입점
+    public void SetupChunkData(MapPatternData data, float zPosition)
     {
         currentZPosition = zPosition;
         transform.position = new Vector3(0, 0, currentZPosition);
 
-        MapChunkData data = GameDataManager.Instance.GetMapChunkData(chunkId);
-        if (data != null)
-        {
-            SpawnObstaclesDynamically(data);
-        }
+        SpawnObstaclesDynamically(data);
     }
 
-    private void SpawnObstaclesDynamically(MapChunkData data)
+    private void SpawnObstaclesDynamically(MapPatternData data)
     {
         if (data.ObstaclePrefabList == null || data.ObstaclePrefabList.Count == 0) return;
         if (data.SpawnPointsList == null || data.SpawnPointsList.Count == 0) return;
 
         for (int i = 0; i < data.SpawnPointsList.Count; i++)
         {
+            // 70% 확률로 스폰 (맵이 재생성될 때마다 다른 패턴이 됩니다)
             if (Random.value > 0.7f) continue;
 
             string[] coords = data.SpawnPointsList[i].Split(':');
-
             if (coords.Length == 3)
             {
-                int gridX;
-                int gridY;
-                float localZ;
+                int gridX; int gridY; float localZ;
 
                 if (int.TryParse(coords[0], out gridX) &&
                     int.TryParse(coords[1], out gridY) &&
@@ -64,33 +57,26 @@ public class MapChunk : MonoBehaviour, IPoolable
                     string selectedPrefabId = data.ObstaclePrefabList[randomIndex];
 
                     GameObject loadedPrefab = Resources.Load<GameObject>("Prefabs/Obstacles/" + selectedPrefabId);
-
                     if (loadedPrefab != null)
                     {
                         GameObject obstacleObj = ObjectPoolingManager.Instance.SpawnFromPool(loadedPrefab, Vector3.zero, Quaternion.identity);
-
                         if (obstacleObj != null)
                         {
                             ObstacleBase obstacle = obstacleObj.GetComponent<ObstacleBase>();
                             if (obstacle != null)
                             {
                                 GridPosition spawnPos = new GridPosition(gridX, gridY, GravityDirection.Down, currentZPosition + localZ);
-
                                 obstacle.Initialize(spawnPos, currentZPosition + localZ);
-
                                 spawnedObstacles.Add(new SpawnedObstacleInfo(loadedPrefab, obstacle));
                             }
                         }
-                    }
-                    else
-                    {
-                        Debug.LogError("[MapChunk] 해당 ID의 프리팹을 찾을 수 없습니다: " + selectedPrefabId);
                     }
                 }
             }
         }
     }
 
+    // 맵이 지나가면 올려두었던 장애물을 전부 수거합니다.
     public void OnDespawn()
     {
         for (int i = 0; i < spawnedObstacles.Count; i++)
