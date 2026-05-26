@@ -18,6 +18,5 @@ public class ObstacleSpawnDataJson
 [System.Serializable]
 public class MapChunkData : GameDataBase
 {
-    public float chunkLength;
     public List<ObstacleSpawnDataJson> spawnPoints = new List<ObstacleSpawnDataJson>();
 }

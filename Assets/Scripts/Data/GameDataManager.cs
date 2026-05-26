@@ -22,7 +22,7 @@ public class GameDataManager : SingletonBase<GameDataManager>
 
     public void LoadAllData()
     {
-        MapChunkDataList = LoadData<MapChunkData>("MapChunkData");
+        MapChunkDataList = LoadData<MapChunkData>("MapTable");
     }
 
     private Dictionary<string, T> LoadData<T>(string tableName) where T : GameDataBase
