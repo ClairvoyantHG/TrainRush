@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor.Overlays;
 using UnityEngine;
 
-// 게임 데이터 관리 매니저
 public class GameDataManager : SingletonBase<GameDataManager>
 {
     [Serializable]
     private class SerializationWrapper<T>
     {
-        public List<T> items; 
+        public List<T> items;
     }
 
     public Dictionary<string, MapChunkData> MapChunkDataList { get; private set; } = new Dictionary<string, MapChunkData>();
-    
+    public Dictionary<string, StageData> StageDataList { get; private set; } = new Dictionary<string, StageData>();
 
     protected override void Awake()
     {
@@ -22,7 +22,8 @@ public class GameDataManager : SingletonBase<GameDataManager>
 
     public void LoadAllData()
     {
-        MapChunkDataList = LoadData<MapChunkData>("MapTable");
+        MapChunkDataList = LoadData<MapChunkData>("MapChunkData");
+        StageDataList = LoadData<StageData>("StageData");
     }
 
     private Dictionary<string, T> LoadData<T>(string tableName) where T : GameDataBase
@@ -53,7 +54,6 @@ public class GameDataManager : SingletonBase<GameDataManager>
                         dataDictionary.Add(item.Id, item);
                     }
                 }
-                
                 Debug.Log(typeof(T).Name + " 데이터를 " + wrapper.items.Count + "개 로드했습니다.");
             }
         }
@@ -65,20 +65,21 @@ public class GameDataManager : SingletonBase<GameDataManager>
         return dataDictionary;
     }
 
-
     public MapChunkData GetMapChunkData(string id)
     {
-        if (MapChunkDataList == null || string.IsNullOrEmpty(id))
-        {
-            return null;
-        }
+        if (MapChunkDataList == null || string.IsNullOrEmpty(id)) return null;
 
         MapChunkData item;
-        if (MapChunkDataList.TryGetValue(id, out item))
-        {
-            return item;
-        }
+        if (MapChunkDataList.TryGetValue(id, out item)) return item;
+        return null;
+    }
 
+    public StageData GetStageData(string id)
+    {
+        if (StageDataList == null || string.IsNullOrEmpty(id)) return null;
+
+        StageData item;
+        if (StageDataList.TryGetValue(id, out item)) return item;
         return null;
     }
 }

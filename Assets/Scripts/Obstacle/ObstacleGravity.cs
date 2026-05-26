@@ -16,6 +16,7 @@ public class ObstacleGravity : MonoBehaviour, IGravityAffected
     private Quaternion targetRotation;  // 목표 회전
 
     private Transform playerTransform;  // 중력 거리 기준점
+
     // 초기화
     public void Initialize(GridPosition startPosition)
     {
@@ -35,6 +36,7 @@ public class ObstacleGravity : MonoBehaviour, IGravityAffected
             GravityManager.Instance.BindEventOnGravity(OnGravityChanged);
         }
     }
+
     private void OnDisable()
     {
         if (GravityManager.Instance != null)

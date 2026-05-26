@@ -1,22 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-[System.Serializable]
+[Serializable]
 public class GameDataBase
 {
     public string Id;
 }
 
-[System.Serializable]
-public class ObstacleSpawnDataJson
-{
-    public string prefabId;     
-    public int gridX;          
-    public int gridY;          
-    public float localZOffset; 
-}
-
-[System.Serializable]
+[Serializable]
 public class MapChunkData : GameDataBase
 {
-    public List<ObstacleSpawnDataJson> spawnPoints = new List<ObstacleSpawnDataJson>();
+    public List<string> ObstaclePrefabList;
+    public List<string> SpawnPointsList;
+}
+
+[Serializable]
+public class StageData : GameDataBase
+{
+    public List<string> MapChunkIdList;
 }

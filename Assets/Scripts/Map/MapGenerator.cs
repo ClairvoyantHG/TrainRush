@@ -1,92 +1,77 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-// 맵 생성 관리 매니저
 public class MapGenerator : SingletonBase<MapGenerator>
 {
-    [SerializeField] private List<GameObject> chunkPrefabs = new List<GameObject>();  // 생성할 맵 프리팹
+    [Header("Map Settings")]
+    [SerializeField] private GameObject mapChunkPrefab;
 
-    [SerializeField] private Transform playerTransform;         // 플레이어
-    [SerializeField] private int chunksOnScreen = 5;            // 화면에 유지되는 맵의 개수
-    [SerializeField] private float despawnDistance = 30f;       // 맵을 제거할 거리
-    [SerializeField] private float spawnZ = 0f;                 // 다음 맵이 이어 붙여질 Z 좌표
+    // 🔥 인스펙터에서는 "Stage_001" 같은 스테이지 ID 하나만 입력받습니다.
+    [SerializeField] private string currentStageId = "Stage_001";
+    [SerializeField] private int initialChunkCount = 5;
 
-    // 현재 맵에 배치된 청크의 정보
-    private struct ActiveChunk
-    {
-        public GameObject Instance;
-        public GameObject PrefabKey;
-    }
+    // 외부 Json에서 받아와 저장할 리스트 변수 (더 이상 [SerializeField]가 아님)
+    private List<string> stageChunkIds = new List<string>();
 
-    private List<ActiveChunk> activeChunks = new List<ActiveChunk>();   // 맵을 관리할 리스트
+    private float nextSpawnZ = 0f;
+    private Queue<MapChunk> activeChunks = new Queue<MapChunk>();
+    private int currentChunkIndex = 0;
 
     private void Start()
     {
-        if (chunkPrefabs.Count == 0 || playerTransform == null)
+        if (mapChunkPrefab == null)
         {
-            Debug.LogError("MapGenerator 누락 확인");
+            Debug.LogError("[MapGenerator] 맵 청크 프리팹이 비어있습니다.");
             return;
         }
 
-        // 게임 시작 시 맵 배치
-        for (int i = 0; i < chunksOnScreen; i++)
+        // 1. 🔥 GameDataManager에서 현재 스테이지의 데이터를 Json에서 끌어옵니다.
+        StageData stageData = GameDataManager.Instance.GetStageData(currentStageId);
+
+        if (stageData != null && stageData.MapChunkIdList != null && stageData.MapChunkIdList.Count > 0)
+        {
+            // 성공적으로 로드되었다면 리스트 덮어씌우기
+            stageChunkIds = stageData.MapChunkIdList;
+        }
+        else
+        {
+            Debug.LogError("[MapGenerator] 스테이지 데이터를 불러올 수 없거나 맵 청크 리스트가 비어있습니다: " + currentStageId);
+            return;
+        }
+
+        // 2. 초기 맵 청크 생성 실행
+        for (int i = 0; i < initialChunkCount; i++)
         {
             SpawnNextChunk();
         }
     }
 
-    private void Update()
+    public void SpawnNextChunk()
     {
-        if (activeChunks.Count == 0) return;
+        string targetChunkId = stageChunkIds[currentChunkIndex];
+        currentChunkIndex = (currentChunkIndex + 1) % stageChunkIds.Count;
 
-        // 가장 오래된 맵의 Z 위치 확인
-        float firstChunkZ = activeChunks[0].Instance.transform.position.z;
+        Vector3 spawnPosition = new Vector3(0f, 0f, nextSpawnZ);
+        GameObject chunkObj = ObjectPoolingManager.Instance.SpawnFromPool(mapChunkPrefab, spawnPosition, Quaternion.identity);
 
-        // 맵 제거 거리 확인
-        if (playerTransform.position.z - firstChunkZ > despawnDistance)
+        if (chunkObj != null)
         {
-            // 맵 제거 후 새 맵 생성
-            DespawnFirstChunk(); 
-            SpawnNextChunk();    
+            MapChunk chunk = chunkObj.GetComponent<MapChunk>();
+            if (chunk != null)
+            {
+                chunk.SetupChunkData(targetChunkId, nextSpawnZ);
+                nextSpawnZ += chunk.ChunkLength;
+                activeChunks.Enqueue(chunk);
+            }
         }
     }
 
-    // 전방에 새 맵 생성
-    private void SpawnNextChunk()
+    public void RecycleOldestChunk()
     {
-        // 랜덤한 맵 프리팹 선택
-        int randomIndex = Random.Range(0, chunkPrefabs.Count);
-        GameObject selectedPrefab = chunkPrefabs[randomIndex];
-
-        // 오브젝트 풀을 통해 맵 생성
-        GameObject newChunk = ObjectPoolingManager.Instance.SpawnFromPool(selectedPrefab, new Vector3(0f, 0f, spawnZ), Quaternion.identity);
-
-        ActiveChunk newActiveChunk = new ActiveChunk();
-        newActiveChunk.Instance = newChunk;
-        newActiveChunk.PrefabKey = selectedPrefab;
-
-        // 관리 리스트에 추가
-        activeChunks.Add(newActiveChunk);
-
-        // 생성된 맵의 길이만큼 다음 스폰 위치를 전진
-        MapChunk chunkComponent = newChunk.GetComponent<MapChunk>();
-        if (chunkComponent != null)
+        if (activeChunks.Count > 0)
         {
-            spawnZ += chunkComponent.GetChunkLength();
-        }
-    }
-
-    // 가장 뒤에 있는 맵을 제거
-    private void DespawnFirstChunk()
-    {
-        // 리스트의 첫 번째 맵을 꺼냄
-        ActiveChunk chunkToRemove = activeChunks[0];
-        activeChunks.RemoveAt(0);
-
-        // 오브젝트 풀로 반환
-        if (ObjectPoolingManager.Instance != null)
-        {
-            ObjectPoolingManager.Instance.ReturnToPool(chunkToRemove.PrefabKey, chunkToRemove.Instance);
+            MapChunk oldChunk = activeChunks.Dequeue();
+            ObjectPoolingManager.Instance.ReturnToPool(mapChunkPrefab, oldChunk.gameObject);
         }
     }
 }

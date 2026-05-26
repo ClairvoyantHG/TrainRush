@@ -1,0 +1,10 @@
+[
+  {
+    "Id": "Stage_001",
+    "MapChunkIdList": [ "ChunkG3_001", "ChunkG3_002", "ChunkG3_001", "ChunkG3_003" ]
+  },
+  {
+    "Id": "Stage_002",
+    "MapChunkIdList": [ "ChunkG3_003", "ChunkG3_004", "ChunkG3_005" ]
+  }
+]
