@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 11922555877a10d4599a8bd9f927a74a, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -347,7 +347,7 @@ GameObject:
   - component: {fileID: 2397723362555789588}
   - component: {fileID: 7014824103498591010}
   m_Layer: 0
-  m_Name: Map_002
+  m_Name: Map_3_01_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,6 +385,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapChunk
   chunkLength: 30
+  obstaclePrefabs:
+  - {fileID: 5397600619263056260, guid: b1410ab9106d08d47b08f7c830c4db30, type: 3}
+  - {fileID: 1066006424703643890, guid: 83b8c7bfe8257104f88f9bc3d5dfdaf8, type: 3}
+  spawnPoints:
+  - gridX: 1
+    gridY: 0
+    localZOffset: 0
+  - gridX: -1
+    gridY: 1
+    localZOffset: -7
+  - gridX: 0
+    gridY: -1
+    localZOffset: 7
 --- !u!1 &6395339532302206020
 GameObject:
   m_ObjectHideFlags: 0

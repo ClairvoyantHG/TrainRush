@@ -5,17 +5,25 @@ public class SingletonBase<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance;
 
+    private static bool isQuitting = false;
+
     public static T Instance
     {
         get
         {
+            if (isQuitting)
+            {
+                return null;
+            }
+
             if (instance == null)
             {
                 instance = FindAnyObjectByType<T>();
 
                 if (instance == null)
                 {
-                    Debug.LogError(typeof(T).Name + " 확인 필요");
+                    GameObject obj = new GameObject(typeof(T).Name);
+                    instance = obj.AddComponent<T>();
                 }
             }
             return instance;
@@ -31,6 +39,18 @@ public class SingletonBase<T> : MonoBehaviour where T : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
+        }
+    }
+    protected virtual void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
+
+    protected virtual void OnDestroy()
+    {
+        if (instance == this)
+        {
+            isQuitting = true;
         }
     }
 }

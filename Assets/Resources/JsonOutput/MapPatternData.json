@@ -1,7 +1,7 @@
 [
   {
     "Id": "Pattern_001",
-    "MapPrefabId": "Map_001",
+    "MapPrefabId": "Map_3_01_01",
     "ObstaclePrefabList": [
       "Obstacle_001",
       "Obstacle_002"
@@ -14,7 +14,7 @@
   },
   {
     "Id": "Pattern_002",
-    "MapPrefabId": "Map_002",
+    "MapPrefabId": "Map_3_01_02",
     "ObstaclePrefabList": [
       "Obstacle_003",
       "Obstacle_001"
@@ -28,7 +28,7 @@
   },
   {
     "Id": "Pattern_Empty_SafeZone",
-    "MapPrefabId": "Map_001",
+    "MapPrefabId": "Map_3_01_01",
     "ObstaclePrefabList": [],
     "SpawnPointsList": []
   }
