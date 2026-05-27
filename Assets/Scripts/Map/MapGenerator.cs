@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-// 맵 생성 매니저
 public class MapGenerator : SingletonBase<MapGenerator>
 {
     [Header("Stage Settings")]
     [SerializeField] private string currentStageId = "Stage_001";
-    [SerializeField] private int initialChunkCount = 5;         // 시작 청크 수
+    [SerializeField] private int initialChunkCount = 5;
+
+    private Transform cameraTransform;
 
     private struct ActiveChunkInfo
     {
@@ -28,6 +29,11 @@ public class MapGenerator : SingletonBase<MapGenerator>
 
     private void Start()
     {
+        if (Camera.main != null)
+        {
+            cameraTransform = Camera.main.transform;
+        }
+
         StageData stageData = GameDataManager.Instance.GetData<StageData>(currentStageId);
         if (stageData != null && stageData.MapPatternIdList != null && stageData.MapPatternIdList.Count > 0)
         {
@@ -41,6 +47,22 @@ public class MapGenerator : SingletonBase<MapGenerator>
 
         for (int i = 0; i < initialChunkCount; i++)
         {
+            SpawnNextChunk();
+        }
+    }
+
+    private void Update()
+    {
+        if (cameraTransform == null || activeChunks.Count == 0) return;
+
+        ActiveChunkInfo oldestChunk = activeChunks.Peek();
+
+        float chunkEndZ = oldestChunk.Chunk.transform.position.z + oldestChunk.Chunk.ChunkLength;
+
+        if (cameraTransform.position.z > chunkEndZ + 10f)
+        {
+            RecycleOldestChunk();
+
             SpawnNextChunk();
         }
     }
@@ -65,16 +87,10 @@ public class MapGenerator : SingletonBase<MapGenerator>
                 if (chunk != null)
                 {
                     chunk.SetupChunkData(patternData, nextSpawnZ);
-
                     nextSpawnZ += chunk.ChunkLength;
-
                     activeChunks.Enqueue(new ActiveChunkInfo(loadedMapPrefab, chunk));
                 }
             }
-        }
-        else
-        {
-            Debug.LogError("[MapGenerator] 맵 프리팹을 찾을 수 없습니다: " + patternData.MapPrefabId);
         }
     }
 

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MapChunk : MonoBehaviour, IPoolable
 {
-    // 프리팹마다 인스펙터에서 맵의 길이를 개별적으로 지정할 수 있습니다.
     [SerializeField] private float chunkLength = 40f;
     private float currentZPosition;
 
@@ -25,7 +24,6 @@ public class MapChunk : MonoBehaviour, IPoolable
 
     public void OnSpawn() { }
 
-    // MapGenerator가 맵을 생성하고 데이터를 밀어넣어주는 진입점
     public void SetupChunkData(MapPatternData data, float zPosition)
     {
         currentZPosition = zPosition;
@@ -41,7 +39,6 @@ public class MapChunk : MonoBehaviour, IPoolable
 
         for (int i = 0; i < data.SpawnPointsList.Count; i++)
         {
-            // 70% 확률로 스폰 (맵이 재생성될 때마다 다른 패턴이 됩니다)
             if (Random.value > 0.7f) continue;
 
             string[] coords = data.SpawnPointsList[i].Split(':');
@@ -76,7 +73,6 @@ public class MapChunk : MonoBehaviour, IPoolable
         }
     }
 
-    // 맵이 지나가면 올려두었던 장애물을 전부 수거합니다.
     public void OnDespawn()
     {
         for (int i = 0; i < spawnedObstacles.Count; i++)

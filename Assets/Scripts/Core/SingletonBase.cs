@@ -41,6 +41,7 @@ public class SingletonBase<T> : MonoBehaviour where T : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     protected virtual void OnApplicationQuit()
     {
         isQuitting = true;
