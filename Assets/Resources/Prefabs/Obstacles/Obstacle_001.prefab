@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1774bb30702181a45ba3aad1195d09d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleBase
+  damageType: 1
   zLength: 5
+  alignRotationToSurface: 1
 --- !u!114 &8534022023611931794
 MonoBehaviour:
   m_ObjectHideFlags: 0

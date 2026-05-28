@@ -601,6 +601,7 @@ GameObject:
   - component: {fileID: 1091123082}
   - component: {fileID: 1091123083}
   - component: {fileID: 1091123084}
+  - component: {fileID: 1091123085}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -676,6 +677,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
   jumpZDistance: 3
+--- !u!114 &1091123085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091123079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e1882a9fb43d9c4fbd2afc7b135fb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
+  invincibilityDuration: 2
+  flickerInterval: 0.1
+  zHitRadius: 0.5
+  characterModel: {fileID: 1659556297}
+  animator: {fileID: 1659556298}
+  playerMovement: {fileID: 1091123082}
 --- !u!1001 &1264721086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -734,6 +753,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2dfadfada0fd634ebbfc36909e42c1c, type: 3}
+--- !u!1 &1659556297 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8062157943529065004, guid: b2dfadfada0fd634ebbfc36909e42c1c, type: 3}
+  m_PrefabInstance: {fileID: 1264721086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1659556298 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8062157943538563164, guid: b2dfadfada0fd634ebbfc36909e42c1c, type: 3}
+  m_PrefabInstance: {fileID: 1264721086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2091171330
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,14 +1,23 @@
 ﻿using UnityEngine;
 
+// 장애물 데미지 타입
+public enum ObstacleDamageType
+{
+    Normal,     // 1회 피격 시 경고 상태로 전환
+    Fatal       // 충돌 즉시 게임 오버
+}
+
 // 장애물의 기본 데이터와 생명주기 관리 컴포넌트
 public class ObstacleBase : MonoBehaviour, IPoolable
 {
-    public float zLength = 1f;      // 장애물의 길이
+    [SerializeField] private ObstacleDamageType damageType = ObstacleDamageType.Normal;     // 데미지 타입
 
+    public float zLength = 1f;                  // 장애물의 길이
     public bool alignRotationToSurface = true;  // 회전 필요 여부
 
     private GridPosition currentGridPosition;
     private ObstacleGravity obstacleGravity;
+    public ObstacleDamageType DamageType { get { return damageType; } }
 
     private void Awake()
     {

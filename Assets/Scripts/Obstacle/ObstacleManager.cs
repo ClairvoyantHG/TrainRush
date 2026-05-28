@@ -40,6 +40,28 @@ public class ObstacleManager : SingletonBase<ObstacleManager>
         }
         return null;
     }
+    
+    // 플레이어 피격 판정
+    public ObstacleBase GetCollidedObstacle(GridPosition playerGrid, float playerZ, float zHitRadius)
+    {
+        foreach (ObstacleBase obs in activeObstacles)
+        {
+            GridPosition obsPos = obs.GetCurrentGridPosition();
+
+            if (obsPos.X == playerGrid.X && obsPos.Y == playerGrid.Y)
+            {
+                float halfLength = obs.zLength * 0.5f;
+                float minZ = obsPos.ZPosition - halfLength - zHitRadius;
+                float maxZ = obsPos.ZPosition + halfLength + zHitRadius;
+
+                if (playerZ >= minZ && playerZ <= maxZ)
+                {
+                    return obs;
+                }
+            }
+        }
+        return null;
+    }
 
     // 중력에 따른 이동 계산
     public GridPosition CalculateFloorPosition(GridPosition currentPos, int maxGridHalfSize)
