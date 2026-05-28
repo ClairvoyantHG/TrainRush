@@ -71,18 +71,22 @@ public class GameDataManager : SingletonBase<GameDataManager>
         if (string.IsNullOrEmpty(id)) return null;
 
         object dictObj;
+
         if (allDataDictionaries.TryGetValue(typeof(T), out dictObj))
         {
             Dictionary<string, T> dict = dictObj as Dictionary<string, T>;
+
             if (dict != null)
             {
                 T item;
+
                 if (dict.TryGetValue(id, out item))
                 {
                     return item;
                 }
             }
         }
+
         return null;
     }
 }
