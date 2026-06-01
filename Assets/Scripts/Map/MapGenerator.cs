@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+// 맵 생성, 관리용
 public class MapGenerator : SingletonBase<MapGenerator>
 {
-    [Header("Stage Settings")]
+    // 스테이지 시스템 아직 미완성
     [SerializeField] private string currentStageId = "Stage_001";
     [SerializeField] private int initialChunkCount = 5;
 
+    // 맵 수거 기준점용
     private Transform cameraTransform;
 
+    // 오브젝트 풀링 반환용 맵 정보
     private struct ActiveChunkInfo
     {
         public GameObject PrefabKey;
@@ -34,7 +37,9 @@ public class MapGenerator : SingletonBase<MapGenerator>
             cameraTransform = Camera.main.transform;
         }
 
+        // 데이터 로드
         StageData stageData = GameDataManager.Instance.GetData<StageData>(currentStageId);
+
         if (stageData != null && stageData.MapPatternIdList != null && stageData.MapPatternIdList.Count > 0)
         {
             stageMapPatternIds = stageData.MapPatternIdList;
@@ -45,6 +50,7 @@ public class MapGenerator : SingletonBase<MapGenerator>
             return;
         }
 
+        // 초기 맵 생성
         for (int i = 0; i < initialChunkCount; i++)
         {
             SpawnNextChunk();
@@ -55,6 +61,7 @@ public class MapGenerator : SingletonBase<MapGenerator>
     {
         if (cameraTransform == null || activeChunks.Count == 0) return;
 
+        // 가장 오래된 맵의 z좌표를 확인하여 맵 생성 삭제 반복
         ActiveChunkInfo oldestChunk = activeChunks.Peek();
 
         float chunkEndZ = oldestChunk.Chunk.transform.position.z + oldestChunk.Chunk.ChunkLength;
@@ -67,6 +74,7 @@ public class MapGenerator : SingletonBase<MapGenerator>
         }
     }
 
+    // 다음 맵 생성
     public void SpawnNextChunk()
     {
         string targetPatternId = stageMapPatternIds[currentChunkIndex];
@@ -94,6 +102,7 @@ public class MapGenerator : SingletonBase<MapGenerator>
         }
     }
 
+    // 
     public void RecycleOldestChunk()
     {
         if (activeChunks.Count > 0)

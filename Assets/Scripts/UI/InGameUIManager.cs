@@ -18,10 +18,6 @@ public class InGameUIManager : SingletonBase<InGameUIManager>
         if (chaserBorderUI != null)
         {
             chaserBorderUI.SetActive(true);
-            if (chaserAnimator != null)
-            {
-                chaserAnimator.SetTrigger("Warn");
-            }
         }
     }
 }

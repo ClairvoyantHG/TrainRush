@@ -11,7 +11,6 @@ public class PlayerCollision : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject characterModel;
-    [SerializeField] private Animator animator;
 
     [SerializeField] private PlayerMovement playerMovement;
 
@@ -33,11 +32,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (isInvincible || playerMovement == null) return;
 
-        ObstacleBase hitObstacle = ObstacleManager.Instance.GetCollidedObstacle(
-            playerMovement.GetCurrentGridPosition(),
-            transform.position.z,
-            zHitRadius
-        );
+        ObstacleBase hitObstacle = ObstacleManager.Instance.GetCollidedObstacle(playerMovement.GetCurrentGridPosition(), transform.position.z);
 
         if (hitObstacle != null)
         {
@@ -56,7 +51,6 @@ public class PlayerCollision : MonoBehaviour
 
     private void TriggerWarningState()
     {
-        if (animator != null) animator.SetTrigger("Hit");
         InGameUIManager.Instance.ShowChaserWarning();
         StartCoroutine(InvincibilityRoutine());
     }
@@ -90,5 +84,6 @@ public class PlayerCollision : MonoBehaviour
     {
         Time.timeScale = 0f;
         Debug.Log("[PlayerCollision] 게임 오버!");
+        Application.Quit();
     }
 }

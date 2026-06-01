@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleManager : SingletonBase<ObstacleManager>
 {
     private List<ObstacleBase> activeObstacles = new List<ObstacleBase>();
+    private float playerRadius = 0.5f;
 
     // 장애물 등록
     public void Register(ObstacleBase obstacle)
@@ -42,7 +43,7 @@ public class ObstacleManager : SingletonBase<ObstacleManager>
     }
     
     // 플레이어 피격 판정
-    public ObstacleBase GetCollidedObstacle(GridPosition playerGrid, float playerZ, float zHitRadius)
+    public ObstacleBase GetCollidedObstacle(GridPosition playerGrid, float playerZ)
     {
         foreach (ObstacleBase obs in activeObstacles)
         {
@@ -51,8 +52,8 @@ public class ObstacleManager : SingletonBase<ObstacleManager>
             if (obsPos.X == playerGrid.X && obsPos.Y == playerGrid.Y)
             {
                 float halfLength = obs.zLength * 0.5f;
-                float minZ = obsPos.ZPosition - halfLength - zHitRadius;
-                float maxZ = obsPos.ZPosition + halfLength + zHitRadius;
+                float minZ = obsPos.ZPosition - halfLength - playerRadius;
+                float maxZ = obsPos.ZPosition + halfLength - 0.1f;
 
                 if (playerZ >= minZ && playerZ <= maxZ)
                 {
