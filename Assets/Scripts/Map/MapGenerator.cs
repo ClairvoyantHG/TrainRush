@@ -69,7 +69,6 @@ public class MapGenerator : SingletonBase<MapGenerator>
         if (cameraTransform.position.z > chunkEndZ + 10f)
         {
             RecycleOldestChunk();
-
             SpawnNextChunk();
         }
     }
@@ -84,6 +83,7 @@ public class MapGenerator : SingletonBase<MapGenerator>
         if (patternData == null) return;
 
         GameObject loadedMapPrefab = Resources.Load<GameObject>("Prefabs/MapChunks/" + patternData.MapPrefabId);
+
         if (loadedMapPrefab != null)
         {
             Vector3 spawnPosition = new Vector3(0f, 0f, nextSpawnZ);
@@ -92,6 +92,7 @@ public class MapGenerator : SingletonBase<MapGenerator>
             if (chunkObj != null)
             {
                 MapChunk chunk = chunkObj.GetComponent<MapChunk>();
+
                 if (chunk != null)
                 {
                     chunk.SetupChunkData(patternData, nextSpawnZ);
@@ -102,7 +103,7 @@ public class MapGenerator : SingletonBase<MapGenerator>
         }
     }
 
-    // 
+    // 오브젝트 풀에 수거
     public void RecycleOldestChunk()
     {
         if (activeChunks.Count > 0)
