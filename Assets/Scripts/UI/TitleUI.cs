@@ -60,6 +60,7 @@ public class TitleUI : UIBase
 
     private void OnClickHowToPlay()
     {
+        Debug.Log("게임 방법.");
         UIManager.Instance.OpenUI(UIRootType.Popup, UIType.HowToPlayUI);
     }
 
