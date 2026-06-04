@@ -13,5 +13,6 @@ public enum UIType
     ChaserWarningUI,
     TitleUI,        
     HowToPlayUI,  
-    CountdownUI     
+    CountdownUI,
+    GameOverUI
 }

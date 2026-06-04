@@ -12,7 +12,10 @@ public class PlayerGravity : MonoBehaviour, IGravityAffected
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerJump = GetComponent<PlayerJump>();
+    }
 
+    private void Start()
+    {
         GravityManager.Instance.BindEventOnGravity(OnGravityChanged);
     }
 
