@@ -10,7 +10,6 @@ public class ChaserWarningUI : UIBase
         if (warningAnimator != null)
         {
             warningAnimator.Play("Tentacles_Anim_" + currentHp);
-            Debug.Log(currentHp);
         }
     }
 }

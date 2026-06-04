@@ -59,7 +59,7 @@ public class PlayerCollision : MonoBehaviour
     {
         StartCoroutine(InvincibilityRoutine());
 
-        UIManager.Instance.OpenUI(UIRootType.Content, UIType.ChaserWarningUI);
+        UIManager.Instance.OpenUI(UIRootType.Main, UIType.ChaserWarningUI);
 
         ChaserWarningUI warningUI = UIManager.Instance.GetUI<ChaserWarningUI>(UIType.ChaserWarningUI);
         if (warningUI != null)

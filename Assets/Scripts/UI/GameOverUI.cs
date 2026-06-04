@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class GameOverUI : UIBase
 {
     private UIButton btnRestart;
     private UIButton btnTitle;
+    private TextMeshProUGUI textFinalScore;
 
     private void Awake()
     {
@@ -23,9 +25,19 @@ public class GameOverUI : UIBase
             }
         }
 
-        if (btnRestart == null || btnTitle == null)
+        TextMeshProUGUI[] childTexts = GetComponentsInChildren<TextMeshProUGUI>(true);
+        for (int i = 0; i < childTexts.Length; i++)
         {
-            Debug.LogError("[GameOverUI] 하위 버튼의 이름(Button_Restart, Button_Title)을 확인해주세요.");
+            if (childTexts[i].gameObject.name == "Text_FinalScore")
+            {
+                textFinalScore = childTexts[i];
+                break;
+            }
+        }
+
+        if (btnRestart == null || btnTitle == null || textFinalScore == null)
+        {
+            Debug.LogError("[GameOverUI] (Button_Restart, Button_Title, Text_FinalScore)을 확인해주세요.");
         }
     }
 
@@ -34,7 +46,14 @@ public class GameOverUI : UIBase
         base.OnOpen();
 
         if (btnRestart != null) btnRestart.BindOnClickButtonEvent(OnClickRestart);
+
         if (btnTitle != null) btnTitle.BindOnClickButtonEvent(OnClickTitle);
+
+        if (textFinalScore != null && GameManager.Instance != null)
+        {
+            int finalScore = GameManager.Instance.CurrentScore;
+            textFinalScore.text = "FINAL SCORE\n" + finalScore.ToString("D5");
+        }
     }
 
     public override void OnClose()
@@ -42,6 +61,7 @@ public class GameOverUI : UIBase
         base.OnClose();
 
         if (btnRestart != null) btnRestart.UnBindOnClickButtonEvent(OnClickRestart);
+
         if (btnTitle != null) btnTitle.UnBindOnClickButtonEvent(OnClickTitle);
     }
 
