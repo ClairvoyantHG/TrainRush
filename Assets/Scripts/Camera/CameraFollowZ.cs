@@ -5,6 +5,7 @@ public class CameraFollowZ : MonoBehaviour
 {
     private Transform target;        // 추적 대상
     [SerializeField] private float zOffset = -10f;    // 대상과의 거리
+
     private void Start()
     {
         if (target == null && PlayerController.Instance != null)

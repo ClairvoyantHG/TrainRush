@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public enum GameState
 {
     WaitToStart, 
@@ -8,6 +10,8 @@ public enum GameState
 
 public class GameManager : SingletonBase<GameManager>
 {
+    private static bool skipTitleAndRestart = false;
+
     public GameState CurrentState { get; private set; } = GameState.WaitToStart;
 
     protected override void Awake()
@@ -19,7 +23,14 @@ public class GameManager : SingletonBase<GameManager>
 
     private void Start()
     {
-        if (UIManager.Instance != null)
+        if (UIManager.Instance == null) return;
+
+        if (skipTitleAndRestart)
+        {
+            skipTitleAndRestart = false; 
+            UIManager.Instance.OpenUI(UIRootType.VeryFront, UIType.CountdownUI);
+        }
+        else
         {
             UIManager.Instance.OpenUI(UIRootType.Main, UIType.TitleUI);
         }
@@ -36,5 +47,26 @@ public class GameManager : SingletonBase<GameManager>
     {
         Time.timeScale = 0f;
         CurrentState = GameState.GameOver;
+
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.OpenUI(UIRootType.Popup, UIType.GameOverUI);
+        }
+
+    }
+    public void RestartGame()
+    {
+        skipTitleAndRestart = true; 
+        ReloadCurrentScene();      
+    }
+    public void GoToTitle()
+    {
+        skipTitleAndRestart = false; 
+        ReloadCurrentScene();        
+    }
+    private void ReloadCurrentScene()
+    {
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }

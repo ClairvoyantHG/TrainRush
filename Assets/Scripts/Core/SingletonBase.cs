@@ -4,14 +4,13 @@
 public class SingletonBase<T> : MonoBehaviour where T : MonoBehaviour
 {
     private static T instance;
-
-    private static bool isQuitting = false;
+    private static bool isShuttingDown = false;
 
     public static T Instance
     {
         get
         {
-            if (isQuitting)
+            if (isShuttingDown)
             {
                 return null;
             }
@@ -32,6 +31,8 @@ public class SingletonBase<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void Awake()
     {
+        isShuttingDown = false;
+
         if (instance == null)
         {
             instance = this as T;
@@ -44,14 +45,15 @@ public class SingletonBase<T> : MonoBehaviour where T : MonoBehaviour
 
     protected virtual void OnApplicationQuit()
     {
-        isQuitting = true;
+        isShuttingDown = true;
     }
 
     protected virtual void OnDestroy()
     {
         if (instance == this)
         {
-            isQuitting = true;
+            isShuttingDown = true;
+            instance = null;
         }
     }
 }
