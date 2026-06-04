@@ -3,9 +3,9 @@
 // 플레이어 이동 컴포넌트
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float forwardSpeed = 10f;     // 이동 속도
-    [SerializeField] private float transitionSpeed = 30f;  // 칸 전환 속도
-    [SerializeField] private float rotationSpeed = 1000f;  // 회전 속도
+    [SerializeField] private float forwardSpeed = 10f;      // 이동 속도
+    [SerializeField] private float transitionSpeed = 30f;   // 칸 전환 속도
+    [SerializeField] private float rotationSpeed = 1000f;   // 회전 속도
 
     private GridPosition baseGridPosition;      // 플레이어의 좌표
     private PlayerJump playerJump;             
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (GridManager.Instance == null) return;
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState != GameState.Playing) return;
 
         // z축 자동 이동
         baseGridPosition.ZPosition += forwardSpeed * Time.deltaTime;

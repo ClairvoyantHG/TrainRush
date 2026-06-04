@@ -105,9 +105,9 @@ public class PlayerCollision : MonoBehaviour
     // 게임 오버
     private void TriggerGameOver()
     {
-        // 게임오버 로직 이후 수정 필요
-        Time.timeScale = 0f;
-        Debug.Log("[PlayerCollision] 게임 오버!");
-        Application.Quit();
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.TriggerGameOver();
+        }
     }
 }

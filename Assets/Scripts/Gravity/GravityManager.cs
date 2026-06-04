@@ -55,6 +55,7 @@ public class GravityManager : SingletonBase<GravityManager>
 
     private void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.CurrentState != GameState.Playing) return;
         // 입력에 따라 중력 전환 실행
         if (inputProvider.GetGravityInput(GravityDirection.Up)) ChangeGravity(GravityDirection.Up);
         else if (inputProvider.GetGravityInput(GravityDirection.Down)) ChangeGravity(GravityDirection.Down);
