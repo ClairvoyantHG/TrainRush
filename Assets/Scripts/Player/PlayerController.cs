@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
-[RequireComponent(typeof(PlayerGravity))]
 [RequireComponent(typeof(PlayerJump))]
 
-// 플레이어의 컴포넌트 관리용 컴포넌트
+// 플레이어 관리용
 public class PlayerController : SingletonBase<PlayerController>
 {
     private PlayerMovement playerMovement;
-    private PlayerGravity playerGravity;
     private PlayerJump playerJump;
     private IInputProvider inputProvider;
 
@@ -17,7 +15,6 @@ public class PlayerController : SingletonBase<PlayerController>
         base.Awake(); // 싱글턴 초기화
 
         playerMovement = GetComponent<PlayerMovement>();
-        playerGravity = GetComponent<PlayerGravity>();
         playerJump = GetComponent<PlayerJump>();
     }
     private void Start()
