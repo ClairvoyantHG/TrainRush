@@ -15,5 +15,6 @@ public enum UIType
     HowToPlayUI,  
     CountdownUI,
     GameOverUI,
-    ScoreUI
+    ScoreUI,
+    ItemSelectUI
 }

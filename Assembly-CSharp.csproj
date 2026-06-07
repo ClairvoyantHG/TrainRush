@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Gravity\GravityManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreTracker.cs" />
     <Compile Include="Assets\Scripts\UI\HowToPlayUI.cs" />
+    <Compile Include="Assets\Scripts\Item\ItemManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\UI\UIButton.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerCollision.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerGravity.cs" />
+    <Compile Include="Assets\Scripts\Item\ItemPickable.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IInputProvider.cs" />
     <Compile Include="Assets\Scripts\UI\CountdownUI.cs" />
@@ -105,6 +107,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IPoolable.cs" />
     <Compile Include="Assets\Scripts\Obstacle\ObstaclePlatform.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
+    <Compile Include="Assets\Scripts\Item\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\Core\YieldInstructionCache.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\Scripts\Obstacle\ObstacleGravity.cs" />

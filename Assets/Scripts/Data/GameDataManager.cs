@@ -5,6 +5,7 @@ using UnityEngine;
 // 게임 내의 데이터를 로드하여 관리하는 매니저
 public class GameDataManager : SingletonBase<GameDataManager>
 {
+
     // 리스트 파싱 우회를 위한 래퍼 클래스
     [Serializable]
     private class SerializationWrapper<T>
