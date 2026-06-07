@@ -105,6 +105,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerJump.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IPoolable.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerItemHandler.cs" />
     <Compile Include="Assets\Scripts\Obstacle\ObstaclePlatform.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
     <Compile Include="Assets\Scripts\Item\InventoryManager.cs" />

@@ -7,7 +7,6 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private float invincibilityDuration = 2f;
     [SerializeField] private float flickerInterval = 0.1f;
 
-    [SerializeField] private GameObject characterModel;
     [SerializeField] private PlayerMovement playerMovement;
 
     private int maxHp = 2;
@@ -18,22 +17,6 @@ public class PlayerCollision : MonoBehaviour
 
     private void Awake()
     {
-        currentHp = maxHp;
-        if (characterModel != null)
-        {
-            renderers = characterModel.GetComponentsInChildren<Renderer>();
-        }
-    }
-
-    private void Start()
-    {
-        // 체력 추가 아이템 적용
-        if (InventoryManager.Instance != null && InventoryManager.Instance.IsHpUpgradeEquipped)
-        {
-            maxHp += 1; 
-            Debug.Log("[PlayerCollision] 아이템 효과 적용! 최대 체력이 " + maxHp + "이 되었습니다.");
-        }
-
         currentHp = maxHp;
     }
 
@@ -51,20 +34,14 @@ public class PlayerCollision : MonoBehaviour
             TakeDamage(hitObstacle.DamageType);
             return;
         }
+    }
 
-        // 아이템 획득 검사
-        ItemPickable hitItem = ItemManager.Instance.GetCollidedItem(playerMovement.GetCurrentGridPosition(), currentZ, playerRadius);
-
-        if (hitItem != null)
-        {
-            if (InventoryManager.Instance != null)
-            {
-                InventoryManager.Instance.AddItem(1);
-            }
-
-            // 아이템 객체 비활성화
-            hitItem.OnPickedUp();
-        }
+    // 체력 보너스
+    public void AddBonusHp(int bonus)
+    {
+        maxHp += bonus;
+        currentHp += bonus;
+        Debug.Log("[PlayerCollision] 보너스 체력 적용! 현재 최대 체력: " + maxHp);
     }
 
     // 피격

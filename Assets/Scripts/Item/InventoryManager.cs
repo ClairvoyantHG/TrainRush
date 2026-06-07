@@ -6,10 +6,12 @@ public class InventoryManager : SingletonBase<InventoryManager>
 
     public bool IsHpUpgradeEquipped { get; private set; } = false;
 
+    public bool IsSpeedUpgradeEquipped { get; private set; } = false;
+
     public void AddItem(int amount)
     {
         CurrentItemCount += amount;
-        Debug.Log("[InventoryManager] 아이템 획득 현재 수량: " + CurrentItemCount);
+        Debug.Log("[InventoryManager] 아이템 획득! 현재 수량: " + CurrentItemCount);
     }
 
     public bool UseItem(int amount)
@@ -17,14 +19,18 @@ public class InventoryManager : SingletonBase<InventoryManager>
         if (CurrentItemCount >= amount)
         {
             CurrentItemCount -= amount;
-            return true; 
+            return true;
         }
-        return false; 
+        return false;
     }
 
     public void SetHpUpgrade(bool isEquipped)
     {
         IsHpUpgradeEquipped = isEquipped;
-        Debug.Log("[InventoryManager] 체력 업그레이드 장착 상태: " + IsHpUpgradeEquipped);
+    }
+
+    public void SetSpeedUpgrade(bool isEquipped)
+    {
+        IsSpeedUpgradeEquipped = isEquipped;
     }
 }

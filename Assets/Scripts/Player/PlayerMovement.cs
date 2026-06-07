@@ -73,6 +73,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // 보너스 속도
+    public void AddBonusSpeed(float bonusSpeed)
+    {
+        forwardSpeed += bonusSpeed; 
+
+        Debug.Log("[PlayerMovement] 보너스 이동속도 적용! 속도가 " + bonusSpeed + "만큼 빨라졌습니다.");
+    }
+
     // 외부에 플레이어의 위치를 반환
     public GridPosition GetCurrentGridPosition()
     {
