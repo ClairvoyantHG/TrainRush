@@ -33,22 +33,15 @@ public class PlayerItemHandler : MonoBehaviour
         if (GameManager.Instance == null || GameManager.Instance.CurrentState != GameState.Playing) return;
         if (playerMovement == null) return;
 
-        ItemPickable hitItem = ItemManager.Instance.GetCollidedItem(
-            playerMovement.GetCurrentGridPosition(), transform.position.z, zHitRadius);
+        ItemPickable hitItem = ItemManager.Instance.GetCollidedItem(playerMovement.GetCurrentGridPosition(), transform.position.z, zHitRadius);
 
-        if (hitItem != null)
+        if (hitItem != null && hitItem.CanPick)
         {
             if (InventoryManager.Instance != null)
             {
-                if (hitItem.CurrentItemType == ItemType.HpMaterial)
-                {
-                    InventoryManager.Instance.AddHpMaterial(1);
-                }
-                else if (hitItem.CurrentItemType == ItemType.SpeedMaterial)
-                {
-                    InventoryManager.Instance.AddSpeedMaterial(1);
-                }
+                InventoryManager.Instance.AddItem(hitItem.CurrentItemType, 1);
             }
+
             hitItem.OnPickedUp();
         }
     }

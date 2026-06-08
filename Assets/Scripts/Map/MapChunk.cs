@@ -6,11 +6,12 @@ public class MapChunk : MonoBehaviour, IPoolable
 {
     [SerializeField] private float chunkLength = 40f;
     private float currentZPosition;
+    private float obstacleRate = 0.0f;
 
     // 오브젝트 풀링 관리용 장애물 정보
     private struct SpawnedObstacleInfo
     {
-        public GameObject PrefabKey;
+        public GameObject PrefabKey; 
         public ObstacleBase Obstacle;
 
         public SpawnedObstacleInfo(GameObject prefabKey, ObstacleBase obstacle)
@@ -20,7 +21,20 @@ public class MapChunk : MonoBehaviour, IPoolable
         }
     }
 
+    private struct SpawnedItemInfo
+    {
+        public GameObject PrefabKey;
+        public ItemPickable Item;
+
+        public SpawnedItemInfo(GameObject prefabKey, ItemPickable item)
+        {
+            PrefabKey = prefabKey;
+            Item = item;
+        }
+    }
+
     private List<SpawnedObstacleInfo> spawnedObstacles = new List<SpawnedObstacleInfo>();
+    private List<SpawnedItemInfo> spawnedItems = new List<SpawnedItemInfo>();
 
     public float ChunkLength { get { return chunkLength; } }
 
@@ -32,54 +46,98 @@ public class MapChunk : MonoBehaviour, IPoolable
         currentZPosition = zPosition;
         transform.position = new Vector3(0, 0, currentZPosition);
 
-        SpawnObstaclesDynamically(data);
+        SpawnObjectDynamically(data);
     }
 
     // 장애물 배치
-    private void SpawnObstaclesDynamically(MapPatternData data)
+    private void SpawnObjectDynamically(MapPatternData data)
     {
         if (data.ObstaclePrefabList == null || data.ObstaclePrefabList.Count == 0) return;
+        if (data.ItemPrefabList == null || data.ItemPrefabList.Count == 0) return;
         if (data.SpawnPointsList == null || data.SpawnPointsList.Count == 0) return;
 
         for (int i = 0; i < data.SpawnPointsList.Count; i++)
         {
-            // 장애물 확률적 스폰
-            if (Random.value > 0.7f) continue;
+            // 장애물, 아이템 확률적 스폰
+            if (Random.value < obstacleRate) 
+            { 
+                string[] coords = data.SpawnPointsList[i].Split(':');
 
-            string[] coords = data.SpawnPointsList[i].Split(':');
-
-            if (coords.Length == 3)
-            {
-                int gridX; int gridY; float localZ;
-
-                if (int.TryParse(coords[0], out gridX) && int.TryParse(coords[1], out gridY) && float.TryParse(coords[2], out localZ))
+                if (coords.Length == 3)
                 {
-                    int randomIndex = Random.Range(0, data.ObstaclePrefabList.Count);
-                    string selectedPrefabId = data.ObstaclePrefabList[randomIndex];
+                    int gridX; int gridY; float localZ;
 
-                    GameObject loadedPrefab = Resources.Load<GameObject>("Prefabs/Obstacles/" + selectedPrefabId);
-
-                    if (loadedPrefab != null)
+                    if (int.TryParse(coords[0], out gridX) && int.TryParse(coords[1], out gridY) && float.TryParse(coords[2], out localZ))
                     {
-                        GameObject obstacleObj = ObjectPoolingManager.Instance.SpawnFromPool(loadedPrefab, Vector3.zero, Quaternion.identity);
+                        int randomIndex = Random.Range(0, data.ObstaclePrefabList.Count);
+                        string selectedPrefabId = data.ObstaclePrefabList[randomIndex];
 
-                        if (obstacleObj != null)
+                        GameObject loadedPrefab = Resources.Load<GameObject>("Prefabs/Obstacles/" + selectedPrefabId);
+
+                        if (loadedPrefab != null)
                         {
-                            ObstacleBase obstacle = obstacleObj.GetComponent<ObstacleBase>();
+                            GameObject obstacleObj = ObjectPoolingManager.Instance.SpawnFromPool(loadedPrefab, Vector3.zero, Quaternion.identity);
 
-                            if (obstacle != null)
+                            if (obstacleObj != null)
                             {
-                                GridPosition spawnPos = new GridPosition(gridX, gridY, GravityDirection.Down, currentZPosition + localZ);
-                                obstacle.Initialize(spawnPos, currentZPosition + localZ);
+                                ObstacleBase obstacle = obstacleObj.GetComponent<ObstacleBase>();
 
-                                spawnedObstacles.Add(new SpawnedObstacleInfo(loadedPrefab, obstacle));
+                                if (obstacle != null)
+                                {
+                                    GridPosition spawnPos = new GridPosition(gridX, gridY, GravityDirection.Down, currentZPosition + localZ);
+                                    obstacle.Initialize(spawnPos, currentZPosition + localZ);
+
+                                    spawnedObstacles.Add(new SpawnedObstacleInfo(loadedPrefab, obstacle));
+                                }
                             }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                string[] coords = data.SpawnPointsList[i].Split(':');
+
+                if (coords.Length == 3)
+                {
+                    int gridX; int gridY; float localZ;
+
+                    if (int.TryParse(coords[0], out gridX) && int.TryParse(coords[1], out gridY) && float.TryParse(coords[2], out localZ))
+                    {
+                        int randomIndex = Random.Range(0, data.ItemPrefabList.Count);
+                        string selectedPrefabId = data.ItemPrefabList[randomIndex];
+
+                        GameObject loadedPrefab = Resources.Load<GameObject>("Prefabs/Items/" + selectedPrefabId);
+
+                        if (loadedPrefab != null)
+                        {
+                            GameObject itemObj = ObjectPoolingManager.Instance.SpawnFromPool(loadedPrefab, Vector3.zero, Quaternion.identity);
+
+                            if (itemObj != null)
+                            {
+                                ItemPickable item = itemObj.GetComponent<ItemPickable>();
+
+                                if (item != null)
+                                {
+                                    GridPosition spawnPos = new GridPosition(gridX, gridY, GravityDirection.Down, currentZPosition + localZ);
+
+                                    item.Initialize(spawnPos, currentZPosition + localZ);
+
+                                    spawnedItems.Add(new SpawnedItemInfo(loadedPrefab, item));
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Debug.Log("살려줘");
                         }
                     }
                 }
             }
         }
     }
+
+
 
     public void OnDespawn()
     {
@@ -88,6 +146,14 @@ public class MapChunk : MonoBehaviour, IPoolable
         {
             ObjectPoolingManager.Instance.ReturnToPool(spawnedObstacles[i].PrefabKey, spawnedObstacles[i].Obstacle.gameObject);
         }
+
         spawnedObstacles.Clear();
+
+        for (int i = 0; i < spawnedItems.Count; i++)
+        {
+            ObjectPoolingManager.Instance.ReturnToPool(spawnedItems[i].PrefabKey, spawnedItems[i].Item.gameObject);
+        }
+
+        spawnedItems.Clear();
     }
 }

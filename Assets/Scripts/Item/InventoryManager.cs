@@ -12,16 +12,18 @@ public class InventoryManager : SingletonBase<InventoryManager>
     public bool IsHpUpgradeEquipped { get { return isHpUpgradeEquipped; } }
     public bool IsSpeedUpgradeEquipped { get { return isSpeedUpgradeEquipped; } }
 
-    public void AddHpMaterial(int amount)
+    public void AddItem(ItemType itemType, int amount)
     {
-        currentHpMaterial += amount;
-        Debug.Log("[InventoryManager] 체력 재화 획득! 총량: " + currentHpMaterial);
-    }
-
-    public void AddSpeedMaterial(int amount)
-    {
-        currentSpeedMaterial += amount;
-        Debug.Log("[InventoryManager] 속도 재화 획득! 총량: " + currentSpeedMaterial);
+        if(itemType == ItemType.HpMaterial)
+        {
+            currentHpMaterial += amount;
+            Debug.Log("[InventoryManager]" + itemType.ToString() + " 재화 획득! 총량: " + currentHpMaterial);
+        }
+        else if(itemType == ItemType.SpeedMaterial)
+        {
+            currentSpeedMaterial += amount;
+            Debug.Log("[InventoryManager]" + itemType.ToString() + " 재화 획득! 총량: " + currentSpeedMaterial);
+        }
     }
 
     public bool UseHpMaterial(int amount)

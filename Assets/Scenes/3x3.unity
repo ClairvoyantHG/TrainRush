@@ -598,6 +598,7 @@ GameObject:
   - component: {fileID: 1091123084}
   - component: {fileID: 1091123085}
   - component: {fileID: 1091123086}
+  - component: {fileID: 1091123087}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -702,6 +703,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364a2578cbecc7c4daa3666dd1298251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerScoreTracker
+--- !u!114 &1091123087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091123079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c248579e0873144fb56c5b123fe3d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerItemHandler
+  zHitRadius: 0.5
+  bonusSpeedAmount: 2
+  playerCollision: {fileID: 1091123085}
+  playerMovement: {fileID: 1091123082}
 --- !u!1 &1390275308
 GameObject:
   m_ObjectHideFlags: 0

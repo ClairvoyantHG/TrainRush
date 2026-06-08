@@ -12,6 +12,7 @@ public class MapPatternData : GameDataBase
 {
     public string MapPrefabId;
     public List<string> ObstaclePrefabList;
+    public List<string> ItemPrefabList;
     public List<string> SpawnPointsList;
 }
 

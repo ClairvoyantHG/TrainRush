@@ -31,7 +31,7 @@ public class PlayerCollision : MonoBehaviour
 
         float currentZ = transform.position.z;
 
-        // 장애물 충돌 검사
+        // 장애물 충돌 확인
         ObstacleBase hitObstacle = ObstacleManager.Instance.GetCollidedObstacle(playerMovement.GetCurrentGridPosition(), currentZ, playerRadius);
 
         if (hitObstacle != null)
@@ -39,6 +39,7 @@ public class PlayerCollision : MonoBehaviour
             TakeDamage(hitObstacle.DamageType);
             return;
         }
+
     }
 
     // 체력 보너스
