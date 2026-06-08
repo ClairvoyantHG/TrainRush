@@ -3,9 +3,9 @@
 // 플레이어 이동 컴포넌트
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float forwardSpeed = 10f;      // 이동 속도
-    [SerializeField] private float transitionSpeed = 30f;   // 칸 전환 속도
-    [SerializeField] private float rotationSpeed = 1000f;   // 회전 속도
+    private float forwardSpeed = 5f;        // 이동 속도
+    private float transitionSpeed = 30f;    // 칸 전환 속도
+    private float rotationSpeed = 1000f;    // 회전 속도
 
     private GridPosition baseGridPosition;      // 플레이어의 좌표
     private PlayerJump playerJump;             

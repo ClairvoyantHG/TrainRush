@@ -6,7 +6,7 @@ public class MapChunk : MonoBehaviour, IPoolable
 {
     [SerializeField] private float chunkLength = 40f;
     private float currentZPosition;
-    private float obstacleRate = 0.0f;
+    private float obstacleRate = 0.9f;
 
     // 오브젝트 풀링 관리용 장애물 정보
     private struct SpawnedObstacleInfo

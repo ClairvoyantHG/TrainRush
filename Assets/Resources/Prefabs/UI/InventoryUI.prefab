@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 4354122129151525334}
   - component: {fileID: 924046928057017429}
   - component: {fileID: 6705344703718138173}
+  - component: {fileID: 38293786115917490}
   m_Layer: 0
   m_Name: Button_Item_02
   m_TagString: Untagged
@@ -430,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -491,6 +492,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &38293786115917490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198377988506743585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3493b7bd15ded7a42a022b7d7ae6a2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  buttonBase: {fileID: 0}
+  buttonText: {fileID: 0}
+  imageBase: {fileID: 0}
+  imageSelect: {fileID: 0}
 --- !u!1 &2793638435818509077
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,6 +869,7 @@ GameObject:
   - component: {fileID: 3174543936274808639}
   - component: {fileID: 5444754992011089279}
   - component: {fileID: 1080794372066371686}
+  - component: {fileID: 6479433751322887413}
   m_Layer: 0
   m_Name: Button_Item_01
   m_TagString: Untagged
@@ -899,7 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -960,6 +978,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6479433751322887413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5191028627616613393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3493b7bd15ded7a42a022b7d7ae6a2b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButton
+  buttonBase: {fileID: 0}
+  buttonText: {fileID: 0}
+  imageBase: {fileID: 0}
+  imageSelect: {fileID: 0}
 --- !u!1 &7599195245110441532
 GameObject:
   m_ObjectHideFlags: 0

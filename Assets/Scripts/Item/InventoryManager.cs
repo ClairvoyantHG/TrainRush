@@ -2,8 +2,8 @@
 
 public class InventoryManager : SingletonBase<InventoryManager>
 {
-    private static int currentHpMaterial = 1;
-    private static int currentSpeedMaterial = 1;
+    private static int currentHpMaterial = 2;
+    private static int currentSpeedMaterial = 2;
     private static bool isHpUpgradeEquipped = false;
     private static bool isSpeedUpgradeEquipped = false;
 
