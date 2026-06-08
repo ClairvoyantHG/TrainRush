@@ -2,23 +2,43 @@
 
 public class InventoryManager : SingletonBase<InventoryManager>
 {
-    public int CurrentItemCount { get; private set; } = 0;
+    private static int currentHpMaterial = 0;
+    private static int currentSpeedMaterial = 0;
+    private static bool isHpUpgradeEquipped = false;
+    private static bool isSpeedUpgradeEquipped = false;
 
-    public bool IsHpUpgradeEquipped { get; private set; } = false;
+    public int CurrentHpMaterial { get { return currentHpMaterial; } }
+    public int CurrentSpeedMaterial { get { return currentSpeedMaterial; } }
+    public bool IsHpUpgradeEquipped { get { return isHpUpgradeEquipped; } }
+    public bool IsSpeedUpgradeEquipped { get { return isSpeedUpgradeEquipped; } }
 
-    public bool IsSpeedUpgradeEquipped { get; private set; } = false;
-
-    public void AddItem(int amount)
+    public void AddHpMaterial(int amount)
     {
-        CurrentItemCount += amount;
-        Debug.Log("[InventoryManager] 아이템 획득! 현재 수량: " + CurrentItemCount);
+        currentHpMaterial += amount;
+        Debug.Log("[InventoryManager] 체력 재화 획득! 총량: " + currentHpMaterial);
     }
 
-    public bool UseItem(int amount)
+    public void AddSpeedMaterial(int amount)
     {
-        if (CurrentItemCount >= amount)
+        currentSpeedMaterial += amount;
+        Debug.Log("[InventoryManager] 속도 재화 획득! 총량: " + currentSpeedMaterial);
+    }
+
+    public bool UseHpMaterial(int amount)
+    {
+        if (currentHpMaterial >= amount)
         {
-            CurrentItemCount -= amount;
+            currentHpMaterial -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    public bool UseSpeedMaterial(int amount)
+    {
+        if (currentSpeedMaterial >= amount)
+        {
+            currentSpeedMaterial -= amount;
             return true;
         }
         return false;
@@ -26,11 +46,18 @@ public class InventoryManager : SingletonBase<InventoryManager>
 
     public void SetHpUpgrade(bool isEquipped)
     {
-        IsHpUpgradeEquipped = isEquipped;
+        isHpUpgradeEquipped = isEquipped;
     }
 
     public void SetSpeedUpgrade(bool isEquipped)
     {
-        IsSpeedUpgradeEquipped = isEquipped;
+        isSpeedUpgradeEquipped = isEquipped;
+    }
+
+    public void ConsumeEquippedUpgrades()
+    {
+        isHpUpgradeEquipped = false;
+        isSpeedUpgradeEquipped = false;
+        Debug.Log("[InventoryManager] 장착된 일회용 업그레이드가 이번 플레이를 위해 소모되었습니다.");
     }
 }

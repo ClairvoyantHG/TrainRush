@@ -4,6 +4,7 @@
     "MapPrefabId": "Map_3_01_01",
     "ObstaclePrefabList": [
       "Obstacle_001",
+      "Obstacle_001_",
       "Obstacle_002"
     ],
     "SpawnPointsList": [
@@ -17,6 +18,8 @@
     "MapPrefabId": "Map_3_01_02",
     "ObstaclePrefabList": [
       "Obstacle_003",
+      "Obstacle_003_",
+      "Obstacle_001_",
       "Obstacle_001"
     ],
     "SpawnPointsList": [

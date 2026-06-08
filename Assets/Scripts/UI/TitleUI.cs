@@ -5,6 +5,7 @@ public class TitleUI : UIBase
     private UIButton btnGameStart;
     private UIButton btnHowToPlay;
     private UIButton btnQuit;
+    private UIButton btnInventory;
 
     private void Awake()
     {
@@ -26,9 +27,13 @@ public class TitleUI : UIBase
             {
                 btnQuit = childButtons[i];
             }
+            else if (objName == "Button_Inventory")
+            {
+                btnInventory = childButtons[i];
+            }
         }
 
-        if (btnGameStart == null || btnHowToPlay == null || btnQuit == null)
+        if (btnGameStart == null || btnHowToPlay == null || btnQuit == null || btnInventory == null)
         {
             Debug.LogError("[TitleUI] 하위 버튼 오브젝트의 이름(Button_Start, Button_HowToPlay, Button_Quit)을 확인해주세요.");
         }
@@ -41,6 +46,7 @@ public class TitleUI : UIBase
         if (btnGameStart != null) btnGameStart.BindOnClickButtonEvent(OnClickGameStart);
         if (btnHowToPlay != null) btnHowToPlay.BindOnClickButtonEvent(OnClickHowToPlay);
         if (btnQuit != null) btnQuit.BindOnClickButtonEvent(OnClickQuit);
+        if (btnInventory != null) btnInventory.BindOnClickButtonEvent(OnClickInventory);
     }
 
     public override void OnClose()
@@ -60,7 +66,6 @@ public class TitleUI : UIBase
 
     private void OnClickHowToPlay()
     {
-        Debug.Log("게임 방법.");
         UIManager.Instance.OpenUI(UIRootType.Popup, UIType.HowToPlayUI);
     }
 
@@ -68,5 +73,10 @@ public class TitleUI : UIBase
     {
         Debug.Log("게임을 종료합니다.");
         Application.Quit();
+    }
+
+    private void OnClickInventory()
+    {
+        UIManager.Instance.OpenUI(UIRootType.Popup, UIType.InventoryUI);
     }
 }

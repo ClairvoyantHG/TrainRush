@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2986562613075456731}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.21814448, y: 0.96280277, z: -0.035233628, w: -0.15550716}
+  m_LocalRotation: {x: 0, y: 0.09899843, z: 0, w: 0.9950876}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32,7 +32,7 @@ Transform:
   - {fileID: 3993193485645056836}
   - {fileID: 6270249194348575001}
   m_Father: {fileID: 6689677502626958072}
-  m_LocalEulerAnglesHint: {x: 7.799, y: 196.662, z: -24.388}
+  m_LocalEulerAnglesHint: {x: 0, y: 11.363, z: 0}
 --- !u!1 &5397600619263056260
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,9 +44,8 @@ GameObject:
   - component: {fileID: 6689677502626958072}
   - component: {fileID: 5578273715926344755}
   - component: {fileID: 8534022023611931794}
-  - component: {fileID: 691392416696540124}
   m_Layer: 0
-  m_Name: Obstacle_001
+  m_Name: Obstacle_003_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +61,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1491185185161464916}
@@ -80,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1774bb30702181a45ba3aad1195d09d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstacleBase
-  damageType: 0
+  damageType: 1
   zLength: 3
   alignRotationToSurface: 1
 --- !u!114 &8534022023611931794
@@ -95,23 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7733e4f2296034da47496becf3eb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclePlatform
-  steppableType: 1
-  allowedDirections: 000000000200000003000000
---- !u!114 &691392416696540124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5397600619263056260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a8b1120a7098949ab359a29f8d0d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ObstacleGravity
-  fallSpeed: 30
-  rotationSpeed: 1000
-  rotateToGravity: 0
+  steppableType: 0
+  allowedDirections: 
 --- !u!1 &6856537850954832702
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +125,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1491185185161464916}
@@ -179,7 +163,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ba87cda0998ee6f498ecfe28c7cdedef, type: 2}
+  - {fileID: 2100000, guid: 1b3ff7700cff2d34fa5f4a7633215270, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,7 +238,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1491185185161464916}
@@ -292,7 +276,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 20a1c5024bc390046ad2de405fb0af5f, type: 2}
+  - {fileID: 2100000, guid: f51892db6ee2ead4287c2938ab4c31d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

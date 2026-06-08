@@ -1,5 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+public enum ItemType
+{
+    HpMaterial,    
+    SpeedMaterial  
+}
 
 public class ItemManager : SingletonBase<ItemManager>
 {

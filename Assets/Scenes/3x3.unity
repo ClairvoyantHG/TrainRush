@@ -688,8 +688,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollision
   invincibilityDuration: 2
   flickerInterval: 0.1
-  characterModel: {fileID: 0}
   playerMovement: {fileID: 1091123082}
+  characterModel: {fileID: 1476267678}
 --- !u!114 &1091123086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,7 +828,7 @@ GameObject:
   - component: {fileID: 1476267680}
   - component: {fileID: 1476267681}
   m_Layer: 0
-  m_Name: Player_Run_00
+  m_Name: PlayerModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

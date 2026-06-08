@@ -8,16 +8,21 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private float flickerInterval = 0.1f;
 
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private GameObject characterModel;
 
     private int maxHp = 2;
     private int currentHp;
     private bool isInvincible = false;
-    private Renderer[] renderers;
+    private SpriteRenderer[] renderers;
     private float playerRadius = 0.5f;
 
     private void Awake()
     {
         currentHp = maxHp;
+        if (characterModel != null)
+        {
+            renderers = characterModel.GetComponentsInChildren<SpriteRenderer>();
+        }
     }
 
     private void Update()
@@ -101,7 +106,11 @@ public class PlayerCollision : MonoBehaviour
     // 렌더러 정돈
     private void SetRenderersVisibility(bool isVisible)
     {
-        if (renderers == null) return;
+        if (renderers == null)
+        {
+            Debug.Log("플레이어 랜더러 확인");
+            return;
+        }
 
         for (int i = 0; i < renderers.Length; i++)
         {
